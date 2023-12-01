@@ -1,0 +1,24 @@
+# Ignore virtual environment
+venv/
+
+# Ignore generated Python bytecode
+__pycache__/
+app/__pycache__/
+migrations/
+
+# Ignore local configuration files
+instance/
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+
+# Ignore log and backup files
+*.log
+*.bak
+
+# Ignore database files 
+*.db
+
+# Ignore any sensitive or confidential information (e.g., secrets.env)
+secrets.venv

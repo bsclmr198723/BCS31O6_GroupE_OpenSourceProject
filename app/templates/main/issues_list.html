@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+{% block title %} {{title}} {% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+{% if issues.count() == 0 %}
+
+    <h3 class="text-uppercase text-center">No issue created for this repository 
+        <a href="{{ url_for('create_issue', repository_id=repository.id ) }}">New Issue</a>
+    </h3>
+    {% else %}
+
+    {% if issues.count() > 0 %}    
+    <h2 class="text-uppercase text-center">Issues ({{ issues.count() }})</h2>
+    {% else %}
+    <h2 class="text-uppercase text-center">No Issues yet</h2>
+    {% endif %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NAMES</th>
+      <th scope="col">STATUS</th>
+      <th scope="col">CATEGORY</th>
+      <th scope="col">USER</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for issue in issues %}
+    <tr>
+      <th scope="row">
+        <a href="#" style="text-decoration: none;">
+            {{ issue.title }}
+        </a>
+      </th>
+      <td>
+        <!-- status logic -->
+        {% if issue.status.title == 'Open' %}
+        <span class="btn btn-info">{{ issue.status.title }}</span>
+        {% elif issue.status.title == 'Closed' %}
+        <span class="btn btn-danger">{{ issue.status.title }}</span>
+        {% else %}
+        <span class="btn btn-success">{{ issue.status.title }}</span>
+        {% endif %}
+      </td>
+      <td>
+        <!-- category logic -->
+        {% if issue.category.title == 'Bug' %}
+        <span class="btn btn-warning">{{ issue.category.title }}</span>
+        {% elif issue.category.title == 'Feature' %}
+        <span class="btn btn-success-emphasis">{{ issue.category.title }}</span>
+        {% else %}
+        <span class="btn btn-secondary">{{ issue.category.title }}</span>
+        {% endif %}
+      </td>
+    
+      
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endif %}
+
+</div>
+{% endblock content %}

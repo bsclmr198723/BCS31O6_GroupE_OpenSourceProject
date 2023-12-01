@@ -1,0 +1,10 @@
+{% extends "main/base.html" %}
+{% block title %} {{ title }} {% endblock title %}
+
+{% block content %}
+
+<h2>{{repo.name}} {{repo.created_on}}</h2> 
+<a href="{{ url_for('issues_list', repo_id=repo.id)}}" >Issue({{issues.count()}})</a> <a href="{{url_for('create_issue', repo_id=repo.id)}}">New Issue</a> <a href="{{url_for('edit_repo', repo_id=repo.id)}}">Edit</a>
+<p>{{repo.description}}</p>
+
+{% endblock content %}

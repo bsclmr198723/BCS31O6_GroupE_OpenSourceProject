@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% block title %} {{ title }} {% endblock title %}
+
+{% block content %}
+
+<h2>Create New Issue</h2>
+
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }} <br>
+        {{ form.title(size=32) }}
+
+    </p>
+
+    <p>
+        {{ form.status.label }} <br>
+        {{ form.status() }}
+
+    </p>
+
+    <p>
+        {{ form.category.label }} <br>
+        {{ form.category() }}
+
+    </p>
+    
+    <p>
+        {{ form.description.label }} <br>
+        {{ form.description(size=40) }}
+    </p>
+    {{ form.submit() }}
+</form>
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends "main/base.html" %}
+{% block title %} {{ title }} {% endblock title %}
+
+{% block content %}
+
+<h2>Hello, {{current_user.username}} Welcome</h2>
+<span>Repositories {{repos.count()}}</span> <br>
+
+{% for repo in repos %}
+    Repository Name: <a href="{{ url_for('repo_detail', repo_id=repo.id)}}">{{repo.name}}<a/> <br>
+{% endfor %}
+
+{% endblock content %}
